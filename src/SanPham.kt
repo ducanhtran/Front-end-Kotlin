@@ -19,6 +19,6 @@ class SanPham{
     }
 
     override fun toString(): String {
-        return "$ma\t$ten\t$donGia"
+        return ma.toString()+"\t"+ten+"\t"+donGia
     }
 }

@@ -1,50 +1,37 @@
 package com.example.Springtutorial
 
 fun main(args: Array<String>) {
-    var data:MutableList<SanPham> = mutableListOf()
-    var sp1=SanPham(1,"Coca cola",15.5)
-    data.add(sp1)
-    var sp2=SanPham(2,"Sting",25.0)
-    data.add(sp2)
-    var sp3=SanPham(3,"Redbull",17.0)
-    data.add(sp3)
-
-    println("Ban muon xuat file Json (nhap 1) hay XML (nhap2)")
-    var a: Int = readLine()!!.toInt()
-    if (a==1) {
-        var kqLuu =
-                XMLFileFactory().LuuFile(data, "out/data/dulieusanpham.xml")
-        if (kqLuu) {
-            println("Lưu text file thành công")
-        } else {
-            println("Lưu text file thất bại")
-        }
+    var database:MutableList<DanhMuc> = mutableListOf<DanhMuc>()
+    var dmDienTu:DanhMuc=DanhMuc(1,"Mặt hàng điện tử")
+    database.add(dmDienTu)
+    var bongden:SanPham=SanPham(1,"Bóng đèn điện Quang",150.0)
+    dmDienTu.ThemSanPham(bongden)
+    var acquy:SanPham=SanPham(2,"Ắc quy Đồng Nai",250.0)
+    dmDienTu.ThemSanPham(acquy)
+    var maydien:SanPham=SanPham(3,"Máy phát điện ABC",90.0)
+    dmDienTu.ThemSanPham(maydien)
+    var dmTieuDung:DanhMuc=DanhMuc(2,"Mặt hàng tiêu dùng")
+    database.add(dmTieuDung)
+    var xabong:SanPham=SanPham(4,"Xà Bông Lifeboy",15.0)
+    dmTieuDung.ThemSanPham(xabong)
+    var nuocruachen:SanPham=SanPham(5,"Nước rửa chén Sunlight",12.0)
+            dmTieuDung.ThemSanPham(nuocruachen)
+            var dmHoaChat:DanhMuc=DanhMuc(3,"Mặt hàng Hóa Chất")
+    database.add(dmHoaChat)
+    var dietmuoi:SanPham=SanPham(6,"Thuốc Diệt Muỗi XYZ",80.0)
+    dmHoaChat.ThemSanPham(dietmuoi)
+    var dietchuot:SanPham=SanPham(7,"Thuốc Diệt Chuỗi ABC",70.0)
+    dmHoaChat.ThemSanPham(dietchuot)
+    for (dm in database)
+        println(dm)
+    var kqLuu=
+            JSonFileFactory().LuuFile(database,"out/data/dulieudanhmuc.json")
+    if(kqLuu)
+    {
+        println("Lưu Json file thành công")
     }
     else
     {
-        var data:MutableList<SanPham> = mutableListOf()
-        var sp1=SanPham(1,"Coca cola",15.5)
-        data.add(sp1)
-        var sp2=SanPham(2,"Sting",25.0)
-        data.add(sp2)
-        var sp3=SanPham(3,"Redbull",17.0)
-        data.add(sp3)
-        var kqLuu=
-                JSonFileFactory().LuuFile(data,"out/data/dulieusanpham.json")
-        if(kqLuu)
-        {
-            println("Lưu Json file thành công")
-        }
-        else
-        {
-            println("Lưu Json file thất bại")
-        }
+        println("Lưu Json file thất bại")
     }
 }
-//Doc file Json
-//fun main(args: Array<String>) {
-//    var data:MutableList<SanPham> =
-//            JSonFileFactory().DocFile("d:/dulieusanpham.json")
-//    for (sp in data)
-//        println(sp)
-//}

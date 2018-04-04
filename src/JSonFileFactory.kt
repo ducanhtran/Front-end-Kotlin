@@ -1,13 +1,12 @@
 package com.example.Springtutorial
 
-import com.example.Springtutorial.SanPham
 import com.google.gson.Gson
 import java.io.FileWriter
 import java.io.FileReader
 import com.google.gson.reflect.TypeToken
 
 class JSonFileFactory {
-    fun LuuFile(data:MutableList<SanPham>, path:String) :Boolean
+    fun LuuFile(data: MutableList<DanhMuc>, path:String) :Boolean
     {
         try{
             val gs = Gson()
